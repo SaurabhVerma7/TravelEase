@@ -1,0 +1,400 @@
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #023e8a;
+  /* background-image: url('images/plane2.jpg'); */
+  /* background-size: 1750px 1080px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+#wrapper {
+  height: auto;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);    
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  z-index: 1000;
+  margin-top: 40px;
+}
+
+#wrapper div {
+  margin: 10 0 10 0;
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.head p {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 0px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.628);
+}
+
+#logo {
+  width: 400px;
+  margin-bottom: 7%;
+}
+
+#interestsDiv {
+  width: fit-content!important;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#destinationDiv {
+  margin-left: 10%;
+  width: 80%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#topContent {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  height: 30px;
+  border-radius: 20px;
+  margin: 15 0 15 0;
+  margin-left: 0!important;
+  align-items: center;
+}
+
+.selectOption {
+  font-size: 1.1rem;
+  margin: 5px;
+  padding: 5 10 5 10;
+  background-color:#03045e;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#calendarIcon {
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+#calendarIcon:hover{
+  cursor: pointer;
+  zoom: 1.5;
+  transition: 1s;
+}
+
+
+#iconsDiv {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#destinationInput {
+  width: 80%;
+  border: none;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  background-color: #F1F0F1;
+  padding: 10px 10px 10px 10px;
+  border-radius: 16px;
+}
+
+#destinationInput::placeholder{
+  color: rgba(0, 0, 0, 0.535);
+  font-family: 'Poppins', sans-serif;
+}
+
+#destinationInput:focus {
+  outline: none;
+}
+
+#button {
+  background-color: #023e8a;
+  border-radius: 16px;
+  width: 35px!important;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#button:hover{
+  zoom: 1.5;
+  transition: 1s;
+  cursor: pointer;
+}
+
+#button img {
+  width: 37px;
+  
+}
+
+.modal.fade.modal-dialog-scrollable.modal-xl{
+  margin-left: 13%;
+  margin-right: 13%;
+}
+
+@media screen and (max-width: 600px) {
+  #wrapper {
+      width: 100%;
+      transform: translate(-50%, -55%); 
+  }
+
+  .selectOption {
+      font-size: 0.9rem;
+  }
+
+  #destinationDiv {
+      margin: 25 20 20 25!important;
+      justify-content: space-between!important;
+  }
+
+  #interestsDiv {
+      margin: 0 20 0 20!important;
+  }
+  .modal.fade.modal-dialog-scrollable.modal-xl{
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+ 
+  #logo {
+    width: 99%;
+    margin-bottom: 7%;
+  }  
+
+}
+
+@media screen and (max-width: 470px){
+  #wrapper {
+      transform: translate(-50%, -60%); 
+  }
+}
+
+@media screen and (max-width: 330px){
+  #wrapper {
+      transform: translate(-50%, -50%); 
+  }
+}
+@media screen and (max-width: 400px) {
+  #wrapper {
+      padding-left: 15px!important;
+      padding-right: 15px!important;
+  }
+}
+@media screen and (max-height: 810px) and (max-width: 375px) {
+  #wrapper {
+      transform: translate(-50%, -52%)!important;    
+  }
+}
+
+
+
+
+
+
+
+body,
+h1,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  color: #0077be;
+  text-decoration: none;
+  /* font-size: 24px; */
+  font-weight: bold;
+  width: 100%;
+}
+
+.logo {
+  /* border-radius: 50%; */
+  margin-left: -10px;
+  width: 150px; 
+}
+
+
+.navbar-sections {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-sections ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-sections li {
+  margin-right: 30px;
+}
+
+.navbar-sections li a {
+  color: aquamarine;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+
+}
+
+.navbar-sections li a:hover,
+.navbar-sections li a:focus {
+  color: #000;
+  font-weight: bold;
+}
+
+.dropdown {
+  display: none;
+  /* margin-right: 20px; */
+  color: #03045e;
+}
+.dropdown-button{
+  margin-right: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #03045e;
+  /* min-width: 160px; */
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.spinner{
+  margin-top: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-sections {
+    display: none;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+  .logo{
+    visibility: hidden;
+  }
+  .spinner{
+    margin-top: 580px;
+  }
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgba(0, 123, 255, 1);
+  color: white;
+}
+
+.highlighted {
+  background-color: rgba(0, 123, 255, 1);
+  color: white;
+}
+
+.enter_date, .enter_tag {
+  transition: visibility 0.5s;
+}
+
+.counterDiv{
+  display: inline-block;
+  font-size: 1.1rem;
+  margin: 5px;
+  padding: 5 10 5 10;
+  background-color:#03045e;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+}
+.counter{
+  text-shadow: 10%;
+  margin-bottom: 0%;
+  text-decoration: dashed;
+  margin: 10px;
+  font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+
+
+

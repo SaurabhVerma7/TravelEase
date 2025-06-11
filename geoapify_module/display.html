@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Display Places</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+  <style>
+    h1 {
+      text-align: center;
+      margin-top: 100px;
+      margin-bottom: 100px;
+
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+
+    .mapContainer {
+      margin-left: 10%;
+      max-width: 80%;
+    }
+
+    /* 
+    #exampleModal {
+      max-height: 700px;
+      margin-top: 100px;
+      margin-bottom: 100px;
+
+    } */
+
+    .card {
+      min-height: 290px;
+    }
+
+    .leaflet-top.leaflet-right {
+      visibility: hidden;
+    }
+
+    @media screen and (max-width: 547px) {
+      .container {
+        margin-left: 20%;
+      }
+
+      .hotelButton {
+        right: -80px;
+      }
+
+      h1 {
+        margin-left: 90px;
+      }
+
+      .mapContainer {
+        margin-left: 6%;
+        min-width: 110%;
+        min-height: 500%;
+      }
+
+      #exampleModal {
+        width: 100%;
+        position: relative;
+        /* If you want text inside of it */
+        padding-top: 56.25%;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 50%;
+      }
+
+      .leaflet-top.leaflet-right {
+        visibility: hidden;
+      }
+
+      /* .modal.fade.modal-dialog.modal.fade.modal-dialog.modal-sm{
+        max-width: 100%;
+      } */
+    }
+  </style>
+</head>
+
+<body style="background-color: #e5e5e5;">
+
+  <nav class="navbar bg-body-tertiary" style="margin-bottom: 5%;">
+    <form class="container-fluid justify-content-center" style="background-color:icewhite;">
+      <button class="btn btn-lg btn-outline-success me-2" type="button" onclick="openFlightPage()"
+        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><b><strong>Flight
+            Offers</strong></b></button>
+      <button class="btn btn-lg btn-outline-secondary" type="button" onclick="openHotelPage()"
+        style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><b><strong>Hotels</strong></b></button>
+    </form>
+  </nav>
+
+  <div class="card text-center mapContainer"
+    style="background-color:icewhite; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <div class="card-header" style="background-color:icewhite; ">Route Map</div>
+    <div class="card-body"
+      style="background-color:icewhite; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div id="map" style="width: 100%; height: 400px; border: 3px solid black"></div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-dialog modal-sm " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"
+            style="margin-right: none"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center align-items-center" style="margin-top: 100px">
+    <h2 style="margin-bottom: 5%; margin-top: -3%;">Places</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4"></div>
+  </div>
+  <script>
+    async function fetchRoutingData(route_coordinates) {
+      const apiURL = `https://api.geoapify.com/v1/routing?waypoints=${route_coordinates}&mode=drive&apiKey=11b1ff58c1d04169b603c58b31e07150`;
+
+      try {
+        const response = await fetch(apiURL);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+      } catch (error) {
+        console.error("There was a problem with the request:", error);
+        throw error;
+      }
+    }
+
+
+    window.onload = function () {
+      window.parent.document.body.style.zoom = 1;
+      var dataString = localStorage.getItem("data1");
+      var data = JSON.parse(dataString);
+      displayPlaces(data); // Display the retrieved data
+    };
+
+    function openFlightPage() {
+      window.location.href = "FightSearch.html";
+    }
+
+    function openHotelPage() {
+      window.location.href = "HotelSearch.html";
+    }
+
+    function displayPlaces(data) {
+      var placesContainer = document.querySelector(
+        ".row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4"
+      );
+
+      data.features.forEach(function (feature) {
+        var name = feature.properties.name;
+        var addressLine1 = feature.properties.address_line1;
+        var addressLine2 = feature.properties.address_line2;
+
+        if (
+          name !== undefined &&
+          addressLine1 !== undefined &&
+          addressLine2 !== undefined
+        ) {
+          var placeDiv = document.createElement("div");
+          placeDiv.classList.add("col");
+          placeDiv.innerHTML =
+            '<div class="card" style="width: 18rem; background-color: icewhite; margin-bottom:10%;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">' +
+            '<div class="card-body">' +
+            '<h5 class="card-title">' +
+            name +
+            "</h5>" +
+            '<p class="card-text"><strong>Address Line 1:</strong> ' +
+            addressLine1 +
+            "</p>" +
+            '<p class="card-text"><strong>Address Line 2:</strong> ' +
+            addressLine2 +
+            "</p>" +
+            '<a href="#" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#exampleModal" onclick="setupImageSearch(\'' +
+            addressLine1 +
+            ", " +
+            addressLine2 +
+            "')\">View Image</a>" +
+            "</div>" +
+            "</div>";
+
+          placesContainer.appendChild(placeDiv);
+        }
+      });
+    }
+
+    function fetchImages(query, count) {
+      const apiKey = "5edaa0ab486e4724861e5024f106ea01"; // Replace 'YOUR_API_KEY' with your actual API key
+      const url = `https://api.bing.microsoft.com/v7.0/images/search?q=${encodeURIComponent(
+        query
+      )}&count=${count}`;
+
+      fetch(url, {
+        headers: {
+          "Ocp-Apim-Subscription-Key": apiKey,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Extract image URLs from the response and display them
+          const images = data.value.map((image) => image.contentUrl);
+          displayImages(images);
+        })
+        .catch((error) => {
+          console.error("Error fetching images:", error);
+        });
+    }
+
+    function displayImages(images) {
+      const carouselInner = document.querySelector(".carousel-inner");
+      carouselInner.innerHTML = ""; // Clear previous images
+
+      images.forEach((imageUrl, index) => {
+        const carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+
+        // Make the first image active
+        if (index === 0) {
+          carouselItem.classList.add("active");
+        }
+
+        const img = document.createElement("img");
+        img.src = imageUrl;
+        img.classList.add("d-block", "w-100");
+        img.alt = "Image " + (index + 1); // Set alt text
+
+        carouselItem.appendChild(img);
+        carouselInner.appendChild(carouselItem);
+      });
+    }
+
+    function setupImageSearch(addressLines) {
+      const [addressLine1, addressLine2] = addressLines
+        .split(",")
+        .map((line) => line.trim());
+
+      const query = addressLine1 + " " + addressLine2;
+      const count = 3; // Change this to the desired number of images to fetch
+
+      if (query) {
+        fetchImages(query, count);
+      } else {
+        alert("Please enter a search query");
+      }
+    }
+
+    // Call the fetchRoutingData function to fetch the data asynchronously
+    var dataString = localStorage.getItem("data1");
+    var data4 = JSON.parse(dataString);
+    console.log(data4);
+
+    let route_coordinates = "";
+    let marker_coordinates = [];
+
+    for (let i = 0; i < data4.features.length - 1; i++) {
+      let coordinate = [data4.features[i].properties.lat, data4.features[i].properties.lon];
+      marker_coordinates.push(L.latLng(coordinate[0], coordinate[1]));
+
+      // Constructing route_coordinates string
+      route_coordinates += `${coordinate[0]},${coordinate[1]}|`;
+    }
+
+    let lastCoordinate = data4.features[data4.features.length - 1];
+    let lastCoordinateArray = [lastCoordinate.properties.lat, lastCoordinate.properties.lon];
+    marker_coordinates.push(L.latLng(lastCoordinateArray[0], lastCoordinateArray[1]));
+
+    // Constructing route_coordinates string for the last coordinate
+    route_coordinates += `${lastCoordinateArray[0]},${lastCoordinateArray[1]}`;
+
+
+    marker_coordinates.sort(function (a, b) {
+      if (a.lat === b.lat) {
+        return a.lng - b.lng;
+      }
+      return a.lat - b.lat;
+    });
+
+    var waypoints = [];
+
+    // Loop through sorted marker_coordinates array and create L.latLng objects
+    for (let i = 0; i < marker_coordinates.length; i++) {
+      waypoints.push(L.latLng(marker_coordinates[i].lat, marker_coordinates[i].lng));
+    }
+
+    console.log(route_coordinates);
+    console.log(waypoints);
+
+    var firstWaypoint = waypoints[0];
+    var map = L.map('map').setView([firstWaypoint.lat, firstWaypoint.lng], 13);
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    var control = L.Routing.control({
+      waypoints: waypoints,
+      routeWhileDragging: true,
+      geocoder: L.Control.Geocoder.nominatim(),
+    }).addTo(map);
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="fonts/icomoon/style.css" />
+  <link rel="stylesheet" href="css/rome.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="UIstyle.css" />
+  <link rel="stylesheet" href="css/main.min.css" />
+  <link rel="stylesheet" href="UIstyle.css" />
+  <title>TravelEase</title>
+</head>
+
+<body>
+  <!-- <div class="counterDiv">
+    <h5 class="counter">Visited: </h5>
+  </div> -->
+  <!-- navigation bar begins -->
+  <!-- <div class="navbar">
+      <a href="#" class="navbar-brand"
+        ><img
+          src="images/logosmall.png"
+          height="60px"
+          width="60px"
+          alt="TravelEase"
+          class="logo"
+        />
+      </a>
+      <div class="navbar-sections">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Ticket</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">Activity</a></li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown-button">☰</button>
+      <div class="dropdown-content">
+        <a href="#">Home</a>
+        <a href="#">Ticket</a>
+        <a href="#">Explore</a>
+        <a href="#">Activity</a>
+      </div>
+    </div>
+    </div> -->
+  <!-- navigation bar ends -->
+
+  <!-- Modal -->
+  <div class="modal fade modal-dialog-scrollable modal-xl" id="exampleModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"
+            style="margin-right: none"></button>
+        </div>
+        <div class="modal-body">
+          <div class="content" style="margin-top: -100px; margin-bottom: -100px">
+            <div class="container text-left">
+              <div class="row justify-content-center">
+                <div class="col-md-10 text-center">
+                  <div class="d-flex">
+                    <input type="text" class="form-control m-2 mb-3" id="result_from" placeholder="Depart"
+                      disabled="" />
+                    <input type="text" class="form-control m-2 mb-3" id="result_to" placeholder="Return" disabled="" />
+                  </div>
+                  <form action="#" class="row">
+                    <div class="col-lg-6 mb-4">
+                      <div id="inline_cal_from"></div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div id="inline_cal_to"></div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Your Destination</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="CityName1" placeholder="enter city name">
+          <input type="text" class="countryName1" placeholder="enter country">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Your Origin</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="CityName2" placeholder="enter city name">
+          <input type="text" class="countryName2" placeholder="enter country">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ -->
+
+
+  <div id="wrapper" style="display: flex; flex-direction: column">
+    <div class="head">
+      <img id="logo" src="images/logo.png" />
+      <!-- <p>Plan Your Sustainable Trip in Seconds</p> -->
+    </div>
+    <div id="destinationDiv">
+      <div id="topContent">
+        <input type="text" class="CityName2" id="destinationInput" placeholder="From">
+        <input type="text" class="CityName1" id="destinationInput" placeholder="To">
+        <div id="iconsDiv">
+          <!-- Changed the onclick event from initializeApp() to openModal() -->
+          <img id="calendarIcon" src="images/calander.png" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+          <div id="button" onclick="initializeApp()">
+            <img src="images/submit.png" alt="submit" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="interestsDiv">
+      <button class="selectOption" id="entertainment.culture">Culture</button>
+      <button class="selectOption" id="tourism">City Tour</button>
+      <button class="selectOption" id="natural">Nature</button>
+      <button class="selectOption" id="catering.restaurant">
+        Restaurant
+      </button>
+      <button class="selectOption" id="healthcare">Health</button>
+      <button class="selectOption" id="adult.nightclub">Nightlife</button>
+      <button class="selectOption" id="education">Educational</button>
+      <button class="selectOption" id="religion">Religion</button>
+      <button class="selectOption" id="entertainment">Entertainment</button>
+      <button class="selectOption" id="commercial.shopping_mall">
+        Shopping
+      </button>
+    </div>
+    <div class="alert alert-danger enter_date" role="alert" style="visibility: hidden"></div>
+    <div class="alert alert-danger enter_tag" role="alert" style="visibility: hidden"></div>
+    <div class="alert alert-danger enter_city" role="alert" style="visibility: hidden"></div>
+  </div>
+
+  <div class="text-center spinner" style="visibility: hidden">
+    <div class="spinner-border text-light" style="width: 3rem; height: 3rem" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-light" style="width: 3rem; height: 3rem" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
+  <!-- <script>
+    let showcounter = document.querySelector('.counter');
+    window.onload = function () {
+      let counterUser = parseInt(localStorage.getItem('counterUser')) || 0; // Get the current count from localStorage or default to 0
+      counterUser = counterUser + 1; // Increment the counter
+      localStorage.setItem('counterUser', counterUser); // Store the updated count back to localStorage
+      showcounter.innerText =showcounter.innerText+' '+counterUser+' '+'x'; // Display the updated count
+    };
+  </script> -->
+
+  <script src="geoapify_module/HotelSearch.js"></script>
+  <script src="geoapify_module/FlightSearch.js"></script>
+  <script src="UIscript.js"></script>
+  <script src="geoapify_module/places.js"></script>
+  <script src="geoapify_module/CitySearch.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/rome.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flight Offers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        .start {
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                margin-left: 90px;
+            }
+
+            h1 {
+                margin-left: 90px;
+            }
+
+            .row {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #e5e5e5;">
+    <div class="start">
+        <h1 style="color: #03045e;">Hotels</h1>
+    </div>
+    <div class="container text-center align-items-center" style="margin-top: 50px;">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var dataString = localStorage.getItem('data3');
+            var data = JSON.parse(dataString);
+            displayPlaces(data);
+            console.log(data);
+        };
+
+        // Function to display places
+        function displayPlaces(data) {
+            var placesContainer = document.querySelector('.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4');
+
+            data.features.forEach(function (feature) {
+                var name = feature.properties.name;
+                var addressLine1 = feature.properties.address_line1;
+                var addressLine2 = feature.properties.address_line2;
+
+                if (name !== undefined && addressLine1 !== undefined && addressLine2 !== undefined) {
+                    var placeDiv = document.createElement('div');
+                    placeDiv.classList.add('col');
+                    placeDiv.innerHTML = '<div class="card" style="width: 18rem;  margin-bottom:10%; background-color:icewhite;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">' +
+                        '<div class="card-body">' +
+                        '<h5 class="card-title">' + name + '</h5>' +
+                        '<p class="card-text"><strong>Address Line 1:</strong> ' + addressLine1 + '</p>' +
+                        '<p class="card-text"><strong>Address Line 2:</strong> ' + addressLine2 + '</p>' +
+                        '</div>' +
+                        '</div>';
+
+                    placesContainer.appendChild(placeDiv);
+                }
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

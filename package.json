@@ -1,0 +1,24 @@
+{
+  "name": "TravelEase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "UIscript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarvagyapatel/TravelEase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarvagyapatel/TravelEase/issues"
+  },
+  "homepage": "https://github.com/sarvagyapatel/TravelEase#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3"
+  }
+}
